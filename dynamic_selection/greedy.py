@@ -129,13 +129,16 @@ class GreedyDynamicSelection(nn.Module):
                     
                     # Setup.
                     m = torch.zeros(len(x), mask_size, dtype=x.dtype, device=device)
+                    print(m)
                     selector.zero_grad()
                     predictor.zero_grad()
                     
                     for _ in range(max_features):
                         # Evaluate selector model.
                         x_masked = mask_layer(x, m)
+                        print(x_masked)
                         logits = selector(x_masked).flatten(1)
+                        
                         
                         # Get selections.
                         soft = selector_layer(logits, temp)
@@ -176,6 +179,7 @@ class GreedyDynamicSelection(nn.Module):
                             # Evaluate selector model.
                             x_masked = mask_layer(x, m)
                             logits = selector(x_masked).flatten(1)
+                            
                             
                             # Get selections, ensure no repeats.
                             logits = logits - 1e6 * m
