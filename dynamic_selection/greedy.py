@@ -129,7 +129,6 @@ class GreedyDynamicSelection(nn.Module):
                     
                     # Setup.
                     m = torch.zeros(len(x), mask_size, dtype=x.dtype, device=device)
-                    print(m)
                     selector.zero_grad()
                     predictor.zero_grad()
                     
