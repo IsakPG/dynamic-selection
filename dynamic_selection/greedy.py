@@ -136,7 +136,7 @@ class GreedyDynamicSelection(nn.Module):
                     for _ in range(max_features):
                         # Evaluate selector model.
                         x_masked = mask_layer(x, m)
-                        print(x_masked)
+                        
                         logits = selector(x_masked).flatten(1)
                         
                         
